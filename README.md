@@ -1,6 +1,7 @@
 # Test technique DE Servier
 
-**Auteur: Alexandre Bidon**
+> **Auteur:** Alexandre Bidon
+> Data Engineer @ LittleBigCode
 
 ## Partie 1: Python et Data Engineering
 
@@ -31,6 +32,8 @@ Pour le fichier de sortie JSON, j'ai décidé d'utiliser le format suivant:
     ]
 }
 ```
+
+Ce format convient pour l'exercice. Il serait possible de l'améliorer pour le rendre plus robuste. On pourrait remplacer la catégorie "name" des nodes par un id pour s'assurer de l'unicité des identifiants des nodes.
 
 ## Partie 2: SQL
 
