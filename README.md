@@ -147,18 +147,18 @@ graph TD;
         <b>Name:</b> Journal of emergency nursing
     "):::journal
 
-    pubmed002(
-        <b>ID: 002</b>
+    pubmed002("
+        ID: 002
         <b>Type:</b> Pubmed
         <b>Name:</b> A 44-year-old man with erythema of the face diphenhydramine,
         neck, and chest, weakness, and palpitations
-    ):::pubmed
+    "):::pubmed
 
-    drug003(
+    drug003("
         <b>ID: 003</b>
         <b>Type:</b> Drug
         <b>Name:</b> Diphenhydramine
-    ):::drug
+    "):::drug
 
     pubmed002 -->|01/01/2019| journal001
 
