@@ -1,6 +1,7 @@
 import os
-from data.read_file import *
-
+from data.load.read_file import *
+from data.transform.merge import *
+from data.transform.concat import *
 
 def test():
     result = import_file("./data/01_raw/drugs.csv")
@@ -14,3 +15,7 @@ def test():
 
     result4 = import_file("./data/01_raw/pubmed.json")
     print(result4)
+
+    test = concat_data(result3, result4)
+
+    print(test)
