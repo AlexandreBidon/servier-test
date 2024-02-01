@@ -141,11 +141,11 @@ graph TD;
     classDef pubmed stroke:#135061,fill:#1c768f,stroke-width:2px
     classDef drug stroke:#031926,fill:#032539,color:#fff,stroke-width:2px
 
-    journal001(
+    journal001("
         <b>ID: 001</b>
         <b>Type:</b> Journal
         <b>Name:</b> Journal of emergency nursing
-    ):::journal
+    "):::journal
 
     pubmed002(
         <b>ID: 002</b>
