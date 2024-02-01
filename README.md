@@ -6,14 +6,20 @@
 - [Test technique DE Servier](#test-technique-de-servier)
   - [Partie 1: Python et Data Engineering](#partie-1-python-et-data-engineering)
     - [Format du résultat JSON](#format-du-résultat-json)
+      - [Première version](#première-version)
+      - [Deuxième version](#deuxième-version)
+        - [Exemple](#exemple)
+      - [Troisième version](#troisième-version)
+        - [Exemple](#exemple-1)
   - [Partie 2: SQL](#partie-2-sql)
     - [Première requête](#première-requête)
     - [Deuxième requête](#deuxième-requête)
 
-
 ## Partie 1: Python et Data Engineering
 
 ### Format du résultat JSON
+
+#### Première version
 
 Avant de préparer le pipeline de traitement de données, j'ai défini le format du JSON de sortie. Ma première version se présentait de la manière suivante:
 
@@ -47,8 +53,13 @@ Ce format convient pour l'exercice, il est simple à mettre en place. Cependant,
 - Le format ne scale pas très bien avec un grand nombre de nodes et de links
 - Les nodes n'ont pas d'identifiant unique, deux nodes pourraient avoir le même nom et elles seraient alors indistinguable.
 - La recherche de lien entre plusieurs nodes serait longue et fastidieuse. Il faudrait traverser toute la liste des *links* pour trouver les liens des nodes concernées.
+- Les liens entre les *Drugs* et les *PubMeds* / *Clinical trials* n'ont pas de date. On mélange donc des liens avec des formats différents. Le format n'est pas robuste et ne scale pas bien.
 
 J'ai donc modifié mon format afin de répondre à ces différents problèmes.
+
+#### Deuxième version
+
+Cet deuxième version a été concu pour scale avec un plus grand nombre de node et pour faciliter l'idenfication d'une node. Toutes les nodes ont désormais un ID unique. Les liens des nodes sont directements référencés dans celle-ci. Il est donc plus facile de naviguer de node en node.
 
 ```JSON
 {
@@ -77,14 +88,94 @@ J'ai donc modifié mon format afin de répondre à ces différents problèmes.
 }
 ```
 
-**Exemple**
+##### Exemple
+
+Pour illustrer le choix du format, j'ai réalisé un output d'exemple:
+
+```JSON
+{
+    "name": "graphe médicament servier",
+    "date": "01/02/2024",
+    "nodes": [
+        {
+            "type": "journal", 
+            "id": "001",
+            "label": "Journal of emergency nursing",
+            "ref": [
+                {
+                    "id": "003",
+                    "date": "01/01/2019"
+                }
+            ]
+        },
+        {
+            "type": "pubmed", 
+            "id": "002",
+            "label": "A 44-year-old man with erythema of the face diphenhydramine, neck, and chest, weakness, and palpitations",
+            "ref": [
+                {
+                    "id": "001",
+                    "date": "01/01/2019"
+                }
+            ]
+        },
+        {
+            "type": "drug", 
+            "id": "003",
+            "label": "Diphenhydramine",
+            "ref": [
+                {
+                    "id": "002"
+                }
+            ]
+        }
+    ]
+}
+```
+
+Cet exemple peut être représenté de la manière suivante:
+
 ```mermaid
 graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+    classDef journal stroke:#6e440f,fill:#fa991c,stroke-width:2px
+    classDef pubmed stroke:#135061,fill:#1c768f,stroke-width:2px
+    classDef drug stroke:#031926,fill:#032539,color:#fff,stroke-width:2px
+
+    journal001(
+        <b>ID: 001</b>
+        <b>Type:</b> Journal
+        <b>Name:</b> Journal of emergency nursing
+    ):::journal
+
+    pubmed002(
+        <b>ID: 002</b>
+        <b>Type:</b> Pubmed
+        <b>Name:</b> A 44-year-old man with erythema of the face diphenhydramine,
+        neck, and chest, weakness, and palpitations
+    ):::pubmed
+
+    drug003(
+        <b>ID: 003</b>
+        <b>Type:</b> Drug
+        <b>Name:</b> Diphenhydramine
+    ):::drug
+
+    pubmed002 -->|01/01/2019| journal001
+
+    drug003 --> pubmed002
+
+    journal001 -->|01/01/2019| drug003
 ```
+
+Cette version apporte des améliorations par rapport à la première, mais il est encore possible de l'améliorer.
+
+#### Troisième version
+
+dfsfs
+
+##### Exemple
+
+sdfsdfsd
 
 ## Partie 2: SQL
 
@@ -98,7 +189,7 @@ On travaille sur la table *TRANSACTION* qui contient toutes les ventes et leur m
 SELECT date,
        SUM(prod_price * prod_qty) AS  ventes 
 FROM TRANSACTION 
-WHERE date>="01/01/19" and date<="31/12/19" 
+WHERE date>='01/01/19' and date<='31/12/19' 
 GROUP BY date;
 ```
 
@@ -114,7 +205,7 @@ SELECT client_id,
        SUM(CASE WHEN product_type = 'DECO' THEN prod_price * prod_qty ELSE 0 END) AS ventes_deco
 FROM TRANSACTION
 INNER JOIN PRODUCT_NOMENCLATURE ON TRANSACTION.prod_id = PRODUCT_NOMENCLATURE.product_id
-WHERE date>="01/01/19" and date<="31/12/19" 
+WHERE date>='01/01/19' and date<='31/12/19' 
 GROUP BY client_id;
 ```
 
