@@ -171,7 +171,39 @@ Cette version apporte des améliorations par rapport à la première, mais il es
 
 #### Troisième version
 
-dfsfs
+Pour cette troisième et dernière version, l'objectif a été d'améliorer les performances lors du parcours du graphe. Les élèments ont désormais un ID interne qui diffère de l'ID des données d'origines. Tous les objets ont un attribut "metadata" qui contient les informations spécifiques à celui-ci. Le format des métadatas dépend du type d'objet en entrée.
+
+On a alors le format suivant:
+
+```JSON
+{
+    "name": "graphe médicament servier",
+    "date": "date de l'output",
+    "nodes": {
+        "Internal-ID": {
+            // Le type de la node
+            // journal | pubmed | drug | clinical_trial
+            "type": "", 
+
+            "metadata": {
+                // Dépend du type de la node
+            },
+            "ref": [
+                {
+                    "id": "L'id interne de la node",
+                    // La date de la mention
+                    "date": ""
+                }
+            ]
+        }
+    }
+}
+```
+
+> [!NOTE]  
+> L'ajout d'un identifiant interne peut sembler lourd et superflus. En effet, la plupart des ressources disposent déjà d'un ID dans les données d'origines.
+> Cependant, les formats d'ID sont tous différents. Rien ne garanti que les sources de données différentes ne renvoie un même identifiant pour des objets différents. Sur un jeu de données plus gros (en production), la probabilité d'une collision serait élevée et risquerait de casser l'intégrité des données.
+> Je suppose dans notre cas que les identifiants présents dans les données d'origines (atccode,id) pourraient être des informations utiles et importantes. Il est donc nécessaire de les conserver dans le JSON final. Ils ne seront pas contre pas utiliser pour identifier et indexer les objets.
 
 ##### Exemple
 
