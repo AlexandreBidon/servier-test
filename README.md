@@ -9,8 +9,9 @@
       - [Première version](#première-version)
       - [Deuxième version](#deuxième-version)
         - [Exemple](#exemple)
-      - [Troisième version](#troisième-version)
+      - [Troisième version (finale)](#troisième-version-finale)
         - [Exemple](#exemple-1)
+    - [Implémentation de la pipeline python](#implémentation-de-la-pipeline-python)
   - [Partie 2: SQL](#partie-2-sql)
     - [Première requête](#première-requête)
     - [Deuxième requête](#deuxième-requête)
@@ -103,7 +104,7 @@ Pour illustrer le choix du format, j'ai réalisé un output d'exemple:
             "label": "Journal of emergency nursing",
             "ref": [
                 {
-                    "id": "003",
+                    "id": "A04AD",
                     "date": "01/01/2019"
                 }
             ]
@@ -121,7 +122,7 @@ Pour illustrer le choix du format, j'ai réalisé un output d'exemple:
         },
         {
             "type": "drug", 
-            "id": "003",
+            "id": "A04AD",
             "label": "Diphenhydramine",
             "ref": [
                 {
@@ -137,8 +138,8 @@ Cet exemple peut être représenté de la manière suivante:
 
 ```mermaid
 graph TD;
-    classDef journal stroke:#6e440f,fill:#fa991c,stroke-width:2px
-    classDef pubmed stroke:#135061,fill:#1c768f,stroke-width:2px
+    classDef journal stroke:#6e440f,fill:#fa991c,color:#000,stroke-width:2px
+    classDef pubmed stroke:#135061,fill:#1c768f,color:#000,stroke-width:2px
     classDef drug stroke:#031926,fill:#032539,color:#fff,stroke-width:2px
 
     journal001("
@@ -155,7 +156,7 @@ graph TD;
     "):::pubmed
 
     drug003("
-        <b>ID: 003</b>
+        <b>ID: A04AD</b>
         <b>Type:</b> Drug
         <b>Name:</b> Diphenhydramine
     "):::drug
@@ -169,7 +170,7 @@ graph TD;
 
 Cette version apporte des améliorations par rapport à la première, mais il est encore possible de l'améliorer.
 
-#### Troisième version
+#### Troisième version (finale)
 
 Pour cette troisième et dernière version, l'objectif a été d'améliorer les performances lors du parcours du graphe. Les élèments ont désormais un ID interne qui diffère de l'ID des données d'origines. Tous les objets ont un attribut "metadata" qui contient les informations spécifiques à celui-ci. Le format des métadatas dépend du type d'objet en entrée.
 
@@ -200,14 +201,114 @@ On a alors le format suivant:
 }
 ```
 
-> [!NOTE]  
+Ici l'attribut "metadata" peut avoir les formats suivants:
+
+
+**Format "journal"**
+
+```JSON
+{
+    "title": ""
+}
+```
+
+---
+**Format "pubmed"**
+
+```JSON
+{
+    "id": "",
+    "title": ""
+}
+```
+
+---
+**Format "drug"**
+
+```JSON
+{
+    "atccode": "",
+    "drug": ""
+}
+```
+
+---
+**Format "clinical_trials"**
+
+```JSON
+{
+    "id":"",
+    "scientific_title":""
+}
+```
+
+---
+
+> [!IMPORTANT]  
 > L'ajout d'un identifiant interne peut sembler lourd et superflus. En effet, la plupart des ressources disposent déjà d'un ID dans les données d'origines.
+> 
 > Cependant, les formats d'ID sont tous différents. Rien ne garanti que les sources de données différentes ne renvoie un même identifiant pour des objets différents. Sur un jeu de données plus gros (en production), la probabilité d'une collision serait élevée et risquerait de casser l'intégrité des données.
-> Je suppose dans notre cas que les identifiants présents dans les données d'origines (atccode,id) pourraient être des informations utiles et importantes. Il est donc nécessaire de les conserver dans le JSON final. Ils ne seront pas contre pas utiliser pour identifier et indexer les objets.
+> 
+> Je suppose dans notre cas que les identifiants présents dans les données d'origines (atccode,id) pourraient être des informations utiles et importantes. Il est donc nécessaire de les conserver dans le JSON final. Ils ne seront pas contre pas utilisés pour identifier et indexer les objets.
+
+> [!NOTE]
+> Le paramètre metadata permet d'avoir des objets avec des paramètres différents. Lorsque l'on arrive sur une node, on peut lire son type pour connaitre le format des metadata. Il sera aussi possible de facilement mettre à jour ce paramètre. On pourrait par exemple rajouter des informations sur les journaux à l'aide de nouveaux paramètres dans les metadata.
+
+On utilisera ici des UUIDs pour la génération des ID internes. Cela permettra de minimiser très fortement le risque de collision ([voir cet exemple](https://devina.io/collision-calculator)).
 
 ##### Exemple
 
-sdfsdfsd
+On reprend l'exemple précédent. Ici, le JSON aurait le format suivant:
+
+```JSON
+{
+    "name": "graphe médicament servier",
+    "date": "01/02/2024",
+    "nodes": {
+        "00000000-0000-0000-0000-00000000001": {
+            "type": "journal", 
+            "metadata": {
+                "title": "Journal of emergency nursing"
+            },
+            "ref": [
+                {
+                    "id": "00000000-0000-0000-0000-00000000003",
+                    "date": "01/01/2019"
+                }
+            ]
+        },
+        "00000000-0000-0000-0000-00000000002": {
+            "type": "pubmed", 
+            "metadata": {
+                "id": "",
+                "title": "A 44-year-old man with erythema of the face diphenhydramine, neck, and chest, weakness, and palpitations"
+            },
+            "ref": [
+                {
+                    "id": "00000000-0000-0000-0000-00000000001",
+                    "date": "01/01/2019"
+                }
+            ]
+        },
+        "00000000-0000-0000-0000-00000000003": {
+            "type": "drug", 
+            "metadata": {
+                "atccode": "A04AD",
+                "drug": "Diphenhydramine"
+            },
+            "ref": [
+                {
+                    "id": "00000000-0000-0000-0000-00000000002"
+                }
+            ]
+        }
+    }
+}
+```
+
+### Implémentation de la pipeline python
+
+Afin de coder le pipeline de traitement de données en python, il faut sélectionner un framework adapté pour la manipulation de données. Plusieurs choix sont possibles en Python. J'ai opté pour la librairie **pandas**. Cette librairie permet d'importer et de manipuler des dataframes. Ce choix est adapté à la taille des jeux de données. Cependant, ce choix serait moins pertinent avec une mise en production sur des jeux de données plus volumineux. Il serait préferable dans ce cas de figure de choisir un framework comme **Spark**.
 
 ## Partie 2: SQL
 
