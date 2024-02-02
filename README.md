@@ -15,6 +15,8 @@
     - [Implémentation de la pipeline python](#implémentation-de-la-pipeline-python)
       - [Structure du projet](#structure-du-projet)
     - [Importation des données](#importation-des-données)
+    - [Nettoyage des données](#nettoyage-des-données)
+    - [Traitement des données](#traitement-des-données)
     - [Résultat](#résultat)
   - [Partie 2: SQL](#partie-2-sql)
     - [Première requête](#première-requête)
@@ -362,6 +364,18 @@ Le module d'importation des données doit répondre à plusieurs besoins:
 - Il doit supporter plusieurs types de données en entrée: CSV et JSON
 - Il doit s'assurer de l'intégrité des données en entrée (virgule en trop dans le JSON par exemple)
 - Il doit retourner toutes les données sous forme de dataframes
+
+### Nettoyage des données
+
+Avant de pouvoir travailler sur les données afin de construire le JSON de sortie, on doit s'assurer que les données soient propres. Pour cela, j'ai identifié les points suivants:
+
+- Certains string présentent des artefacts du au format UTF-8. Il faudrait nettoyer les chaines de caractères pour les retirer.
+- Les données présentes des valeurs manquantes, il faudrait idéalement inférer les valeurs manquantes (id) ou les remplacer par des NA
+
+Lorsque les données seront propres, une dernière étape du nettoyage pourra consister à proprement typer les colonnes.
+
+### Traitement des données
+
 
 ### Résultat
 
