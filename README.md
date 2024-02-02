@@ -11,6 +11,7 @@
         - [Exemple](#exemple)
       - [Troisième version (finale)](#troisième-version-finale)
         - [Exemple](#exemple-1)
+    - [Stockage des données](#stockage-des-données)
     - [Implémentation de la pipeline python](#implémentation-de-la-pipeline-python)
       - [Structure du projet](#structure-du-projet)
     - [Importation des données](#importation-des-données)
@@ -309,6 +310,23 @@ On reprend l'exemple précédent. Ici, le JSON aurait le format suivant:
 }
 ```
 
+### Stockage des données
+
+Les données du projet sont enregistrées dans un dossier avec l'organisation suivante:
+
+```
+📂 data
+┣ 📂 01_raw
+┣ 📂 02_intermediate
+┗ 📂 03_result
+```
+
+Le dossier *01_raw* contient les données brutes telles qu'on les recoit. Dans le cadre d'un projet en production, cela correspondrait à un **data lake**.
+
+Le dossier *02_intermediate* contient les résultats intermédiaires. On peut par exemple exporter certaines tables ayant reçu un premier traitement.
+
+Enfin le dossier *03_result* contient la donnée entièrement préparée telle qu'elle est demandée dans l'énoncé.
+
 ### Implémentation de la pipeline python
 
 Afin de coder le pipeline de traitement de données en python, il faut sélectionner un framework adapté pour la manipulation de données. Plusieurs choix sont possibles en Python. J'ai opté pour la librairie **pandas**. Cette librairie permet d'importer et de manipuler des dataframes. Ce choix est adapté à la taille des jeux de données. Cependant, ce choix serait moins pertinent avec une mise en production sur des jeux de données plus volumineux. Il serait préferable dans ce cas de figure de choisir un framework comme **Spark**.
@@ -328,7 +346,11 @@ Le projet est structuré de la manière suivante:
 Le projet a été pensé de manière à répondre à plusieurs besoins:
 
 - Le projet est packagé pour être utilisé facilement
-- Le package est découpé en sous module pouvant être utilisé indépendament. Cela permettra à terme de mieux controller le traitement à l'aide d'un outil comme Airflow par exemple.
+- Le package est découpé en sous module pouvant être utilisé indépendament. Cela permet de réutiliser les modules pour d'autres traitements. Il est aussi possible de controler ces modules dans un pipeline à l'aide d'un outil comme Airflow.
+
+> [!NOTE]
+> Dans mon projet, j'ai utilisé la feature *pipe* de **pandas** pour construire ma pipeline.
+
 
 > [!NOTE]  
 > Le module "data/transform" a été testé à l'aide du framework .
