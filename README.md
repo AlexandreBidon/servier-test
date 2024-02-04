@@ -377,6 +377,7 @@ Lorsque les données seront propres, une dernière étape du nettoyage pourra co
 ### Traitement des données
 
 
+
 ### Résultat
 
 ## Partie 2: SQL
