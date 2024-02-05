@@ -58,7 +58,6 @@ def create_output(
         "articles": articles_list
     }
 
-    print(output)
     with open("./data/03_result/result.json", 'w', encoding='utf8') as outfile:
         try:
             json.dump(
