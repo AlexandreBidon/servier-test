@@ -4,6 +4,7 @@ from data.transform import *
 from data.clean import *
 from processing.get_drug_reference import *
 from processing.get_journal_mentions import *
+from processing.create_output import *
 
 import logging
 
@@ -80,3 +81,14 @@ def test():
     journal_mentions = get_journal_mentions(drug_reference, article_mentions)
 
     print(journal_mentions)
+
+
+    create_output(
+        name ="test",
+        journals=all_journal,
+        drugs=drugs,
+        articles=articles,
+        article_mentions=article_mentions,
+        drug_reference=drug_reference,
+        journal_mentions=journal_mentions
+    )

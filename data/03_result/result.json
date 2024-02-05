@@ -1,0 +1,442 @@
+{
+  "name": "test",
+  "date": "2024-02-05",
+  "journals": {
+    "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e": {
+      "name": "Journal of emergency nursing",
+      "ref": [
+        {
+          "id": "3078b0f5-1030-4f04-8b90-2ef7035ec7da",
+          "date": "2020-01-01"
+        },
+        {
+          "id": "3078b0f5-1030-4f04-8b90-2ef7035ec7da",
+          "date": "2020-01-01"
+        },
+        {
+          "id": "3078b0f5-1030-4f04-8b90-2ef7035ec7da",
+          "date": "2020-01-01"
+        },
+        {
+          "id": "3078b0f5-1030-4f04-8b90-2ef7035ec7da",
+          "date": "2019-01-01"
+        },
+        {
+          "id": "3078b0f5-1030-4f04-8b90-2ef7035ec7da",
+          "date": "2019-01-01"
+        },
+        {
+          "id": "a5706f0c-29bd-419b-8b74-6899f2b9167e",
+          "date": "2020-27-04"
+        }
+      ]
+    },
+    "e1445c61-9d0c-453a-8d69-e916c7f30a7b": {
+      "name": "Hôpitaux Universitaires de Genève",
+      "ref": [
+        {
+          "id": "5e356b4c-1f8e-4f02-a75c-baabec5d2dd2",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "80971501-75b2-42fc-b1db-a699cd3c152e": {
+      "name": "American journal of veterinary research",
+      "ref": [
+        {
+          "id": "47a29771-27d1-4107-9f7f-ba613fdb99d6",
+          "date": "2020-01-02"
+        }
+      ]
+    },
+    "147bbb0e-aad5-4474-95eb-e0930b089f4c": {
+      "name": "The Journal of pediatrics",
+      "ref": [
+        {
+          "id": "3078b0f5-1030-4f04-8b90-2ef7035ec7da",
+          "date": "2019-01-02"
+        }
+      ]
+    },
+    "d4433deb-77d0-481f-92d5-fd7321320700": {
+      "name": "Psychopharmacology",
+      "ref": [
+        {
+          "id": "e51306ce-9a64-4577-b120-5aa6debb9c6f",
+          "date": "2020-01-01"
+        },
+        {
+          "id": "e51306ce-9a64-4577-b120-5aa6debb9c6f",
+          "date": "2020-01-01"
+        },
+        {
+          "id": "47a29771-27d1-4107-9f7f-ba613fdb99d6",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "85e18c81-37be-482b-8fc3-a4b169d8a25e": {
+      "name": "Journal of food protection",
+      "ref": [
+        {
+          "id": "47a29771-27d1-4107-9f7f-ba613fdb99d6",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "d05da254-ae72-4fcf-9349-22e6bf9a04f5": {
+      "name": "The journal of allergy and clinical immunology. In practice",
+      "ref": [
+        {
+          "id": "a5706f0c-29bd-419b-8b74-6899f2b9167e",
+          "date": "2020-02-01"
+        },
+        {
+          "id": "a5706f0c-29bd-419b-8b74-6899f2b9167e",
+          "date": "2020-03-01"
+        }
+      ]
+    },
+    "159f7446-f444-445d-9337-6dcea1c2cb15": {
+      "name": "The journal of maternal-fetal & neonatal medicine",
+      "ref": [
+        {
+          "id": "7e95cf57-60e1-4195-924a-87465a21d1a5",
+          "date": "2020-03-01"
+        },
+        {
+          "id": "5e356b4c-1f8e-4f02-a75c-baabec5d2dd2",
+          "date": "2020-01-01"
+        },
+        {
+          "id": "5e356b4c-1f8e-4f02-a75c-baabec5d2dd2",
+          "date": "2020-03-01"
+        }
+      ]
+    },
+    "28e94033-c582-48dd-9fcb-93d9bcfb4e1c": {
+      "name": "Journal of back and musculoskeletal rehabilitation",
+      "ref": [
+        {
+          "id": "5e356b4c-1f8e-4f02-a75c-baabec5d2dd2",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "6f6a2596-ea0e-4c4b-b8cb-a904c88d1501": {
+      "name": "Journal of photochemistry and photobiology. B, Biology",
+      "ref": [
+        {
+          "id": "f50920c3-a774-4bee-ad82-19403c543a38",
+          "date": "2020-01-01"
+        }
+      ]
+    }
+  },
+  "drugs": {
+    "7e95cf57-60e1-4195-924a-87465a21d1a5": {
+      "name": "atropine",
+      "atccode": "A03BA",
+      "ref": [
+        {
+          "id": "e8a14157-51e1-43a5-9cd5-76f689597196"
+        }
+      ]
+    },
+    "5e356b4c-1f8e-4f02-a75c-baabec5d2dd2": {
+      "name": "betamethasone",
+      "atccode": "R01AD",
+      "ref": [
+        {
+          "id": "4b2b3e13-0621-4ce8-9cb7-7ea718a1289e"
+        },
+        {
+          "id": "9973f8bd-1ff4-4093-a910-9402131cd62e"
+        },
+        {
+          "id": "e8a14157-51e1-43a5-9cd5-76f689597196"
+        },
+        {
+          "id": "b33f9fd7-550f-496d-b0c0-2afb18a1fe2b"
+        }
+      ]
+    },
+    "3078b0f5-1030-4f04-8b90-2ef7035ec7da": {
+      "name": "diphenhydramine",
+      "atccode": "A04AD",
+      "ref": [
+        {
+          "id": "7a5a1246-ab0d-4e88-a358-bbcc5dbffe43"
+        },
+        {
+          "id": "87a08575-6079-43a1-a52f-119274cea3d5"
+        },
+        {
+          "id": "f3117d85-7350-4277-a52e-1b35a5d259a8"
+        },
+        {
+          "id": "73262f82-5db3-4312-8c5d-de01636b54ff"
+        },
+        {
+          "id": "ee446722-9691-4d5f-bc17-ba591655aefa"
+        },
+        {
+          "id": "946c4d4d-c52f-4dba-bdd4-d45e24aeb79c"
+        }
+      ]
+    },
+    "a5706f0c-29bd-419b-8b74-6899f2b9167e": {
+      "name": "epinephrine",
+      "atccode": "A01AD",
+      "ref": [
+        {
+          "id": "1cd6788b-bf3c-48a7-be93-5fefdb5def7f"
+        },
+        {
+          "id": "40aea19b-0e63-45ff-8fc9-c65c6c693a23"
+        },
+        {
+          "id": "3cf08cf2-5534-4d4c-8676-9df7b29425ce"
+        }
+      ]
+    },
+    "e51306ce-9a64-4577-b120-5aa6debb9c6f": {
+      "name": "ethanol",
+      "atccode": "V03AB",
+      "ref": [
+        {
+          "id": "3bbc8edb-66db-4784-8bc9-de598e30b1c5"
+        },
+        {
+          "id": "3bbc8edb-66db-4784-8bc9-de598e30b1c5"
+        }
+      ]
+    },
+    "f50920c3-a774-4bee-ad82-19403c543a38": {
+      "name": "isoprenaline",
+      "atccode": "6302001",
+      "ref": [
+        {
+          "id": "085a1253-895d-47d0-92a7-6013e42467e8"
+        }
+      ]
+    },
+    "47a29771-27d1-4107-9f7f-ba613fdb99d6": {
+      "name": "tetracycline",
+      "atccode": "S03AA",
+      "ref": [
+        {
+          "id": "1e5109d0-75a6-49ea-a911-2d08f14149a2"
+        },
+        {
+          "id": "3bbc8edb-66db-4784-8bc9-de598e30b1c5"
+        },
+        {
+          "id": "ed1c076c-9aad-4741-a122-d46078f10e29"
+        }
+      ]
+    }
+  },
+  "articles": {
+    "f6220bfb-f4c6-4e96-b04c-1758cd99cbbd": {
+      "name": "  ",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "7a5a1246-ab0d-4e88-a358-bbcc5dbffe43": {
+      "name": "feasibility of a randomized controlled clinical trial comparing the use of cetirizine to replace diphenhydramine in the prevention of reactions related to paclitaxel",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "4c2116be-8c09-4042-a410-9a51571cfd26": {
+      "name": "glucagon infusion in t1d patients with recurrent severe hypoglycemia: effects on counter-regulatory responses",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2020-25-05"
+        }
+      ]
+    },
+    "87a08575-6079-43a1-a52f-119274cea3d5": {
+      "name": "phase 2 study iv quzyttir™ (cetirizine hydrochloride injection) vs v diphenhydramine",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "4b2b3e13-0621-4ce8-9cb7-7ea718a1289e": {
+      "name": "preemptive infiltration with betamethasone and ropivacaine for postoperative pain in laminoplasty or  laminectomy",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "e1445c61-9d0c-453a-8d69-e916c7f30a7b",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "1cd6788b-bf3c-48a7-be93-5fefdb5def7f": {
+      "name": "tranexamic acid versus epinephrine during exploratory tympanotomy",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2020-27-04"
+        }
+      ]
+    },
+    "f3117d85-7350-4277-a52e-1b35a5d259a8": {
+      "name": "use of diphenhydramine as an adjunctive sedative for colonoscopy in patients chronically on opioids",
+      "type": "clinical_trial",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "73262f82-5db3-4312-8c5d-de01636b54ff": {
+      "name": "a 44-year-old man with erythema of the face diphenhydramine, neck, and chest, weakness, and palpitations",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2019-01-01"
+        }
+      ]
+    },
+    "ee446722-9691-4d5f-bc17-ba591655aefa": {
+      "name": "an evaluation of benadryl, pyribenzamine, and other so-called diphenhydramine antihistaminic drugs in the treatment of allergy.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "4fcfbc48-d4a0-4c1f-ad2b-0ba06cd34e6e",
+          "date": "2019-01-01"
+        }
+      ]
+    },
+    "1e5109d0-75a6-49ea-a911-2d08f14149a2": {
+      "name": "appositional tetracycline bone formation rates in the beagle.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "80971501-75b2-42fc-b1db-a699cd3c152e",
+          "date": "2020-01-02"
+        }
+      ]
+    },
+    "946c4d4d-c52f-4dba-bdd4-d45e24aeb79c": {
+      "name": "diphenhydramine hydrochloride helps symptoms of ciguatera fish poisoning.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "147bbb0e-aad5-4474-95eb-e0930b089f4c",
+          "date": "2019-01-02"
+        }
+      ]
+    },
+    "3bbc8edb-66db-4784-8bc9-de598e30b1c5": {
+      "name": "rapid reacquisition of contextual fear following extinction in mice: effects of amount of extinction, tetracycline acute ethanol withdrawal, and ethanol intoxication.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "d4433deb-77d0-481f-92d5-fd7321320700",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "ed1c076c-9aad-4741-a122-d46078f10e29": {
+      "name": "tetracycline resistance patterns of lactobacillus buchneri group strains.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "85e18c81-37be-482b-8fc3-a4b169d8a25e",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "40aea19b-0e63-45ff-8fc9-c65c6c693a23": {
+      "name": "the high cost of epinephrine autoinjectors and possible alternatives.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "d05da254-ae72-4fcf-9349-22e6bf9a04f5",
+          "date": "2020-02-01"
+        }
+      ]
+    },
+    "3cf08cf2-5534-4d4c-8676-9df7b29425ce": {
+      "name": "time to epinephrine treatment is associated with the risk of mortality in children who achieve sustained rosc after traumatic out-of-hospital cardiac arrest.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "d05da254-ae72-4fcf-9349-22e6bf9a04f5",
+          "date": "2020-03-01"
+        }
+      ]
+    },
+    "9973f8bd-1ff4-4093-a910-9402131cd62e": {
+      "name": "clinical implications of umbilical artery doppler changes after betamethasone administration",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "159f7446-f444-445d-9337-6dcea1c2cb15",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "e8a14157-51e1-43a5-9cd5-76f689597196": {
+      "name": "comparison of pressure betamethasone release, phonophoresis and dry needling in treatment of latent myofascial trigger point of upper trapezius atropine muscle.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "159f7446-f444-445d-9337-6dcea1c2cb15",
+          "date": "2020-03-01"
+        }
+      ]
+    },
+    "13ef2097-945c-45a3-a5ae-c10d41dff08f": {
+      "name": "comparison of pressure release, phonophoresis and dry needling in treatment of latent myofascial trigger point of upper trapezius muscle.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "28e94033-c582-48dd-9fcb-93d9bcfb4e1c",
+          "date": "2020-03-01"
+        }
+      ]
+    },
+    "b33f9fd7-550f-496d-b0c0-2afb18a1fe2b": {
+      "name": "effects of topical application of betamethasone on imiquimod-induced psoriasis-like skin inflammation in mice.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "28e94033-c582-48dd-9fcb-93d9bcfb4e1c",
+          "date": "2020-01-01"
+        }
+      ]
+    },
+    "085a1253-895d-47d0-92a7-6013e42467e8": {
+      "name": "gold nanoparticles synthesized from euphorbia fischeriana root by green route method alleviates the isoprenaline hydrochloride induced myocardial infarction in rats.",
+      "type": "pubmed",
+      "ref": [
+        {
+          "id": "6f6a2596-ea0e-4c4b-b8cb-a904c88d1501",
+          "date": "2020-01-01"
+        }
+      ]
+    }
+  }
+}
