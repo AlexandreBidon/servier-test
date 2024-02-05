@@ -11,9 +11,8 @@ def remove_artefact(df: pd.DataFrame, column_list: List[str]):
     for column in column_list:
         # Checks if the column is in the dataframe
         if column in df.columns:
-            df[column].apply(lambda x: re.sub(r'[^\x00-\x7f]',r'', x))
+            df[column] = df[column].apply(lambda x: re.sub(r'\\x[0-9a-fA-F]+',r'', x))
             logging.debug("Successfully removed artefact from column {}".format(column))
-            print(df[column])
         else:
             # Log to warn the user about the problem
             # Another solution would be to return an error

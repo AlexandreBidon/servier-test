@@ -2,6 +2,8 @@ import os
 from data.load import *
 from data.transform import *
 from data.clean import *
+from processing.get_drug_reference import *
+from processing.get_journal_mentions import *
 
 import logging
 
@@ -13,15 +15,20 @@ def test():
     drugs = merge_duplicate.merge_duplicate(drugs, "drug")
 
     drugs = add_internal_id.add_internal_id(drugs)
-    
+
     print(drugs)
 
+    # Process clinical trials
 
     clinical_trials = read_file.import_file("./data/01_raw/clinical_trials.csv")
     clinical_trials = merge_duplicate.merge_duplicate(clinical_trials, "scientific_title")
     clinical_trials = remove_artefact.remove_artefact(clinical_trials, ["scientific_title", "journal"])
     clinical_trials = convert_date.convert_date(clinical_trials)
-    print(clinical_trials)
+    clinical_trials = add_type_column.add_type_column(clinical_trials, "type", "clinical_trial")
+    clinical_trials = rename.rename_column(clinical_trials, "scientific_title", "title")
+    clinical_trials = add_internal_id.add_internal_id(clinical_trials)
+
+    # Process Pubmed
 
     pubmed1 = read_file.import_file("./data/01_raw/pubmed.csv")
     pubmed1 = merge_duplicate.merge_duplicate(pubmed1, "title")
@@ -33,13 +40,20 @@ def test():
 
     pubmed = concat.concat_data(pubmed1, pubmed2)
 
+    pubmed = add_type_column.add_type_column(pubmed, "type", "pubmed")
+
+    pubmed = add_internal_id.add_internal_id(pubmed)
+
+
+    # Merge all articles (pubmed and clinical trials)
+    
+    articles = concat.concat_data(clinical_trials, pubmed)
+
+    print(articles)
+
     # Extract all journal names
 
-    journals_pubmed = extract.extract_columns(pubmed, ["journal"])
-
-    journal_clinical_trial = extract.extract_columns(clinical_trials, ["journal"])
-
-    all_journal = concat.concat_data(journals_pubmed, journal_clinical_trial)
+    all_journal = extract.extract_columns(articles, ["journal"])
 
     all_journal = unique.remove_duplicate(all_journal, ["journal"])
 
@@ -47,3 +61,22 @@ def test():
     all_journal = add_internal_id.add_internal_id(all_journal)
 
     print(all_journal)
+
+    ## Get article mentions of journal
+
+    article_mentions = merge.merge_data(articles, all_journal, "left", "journal")
+    article_mentions = rename.rename_column(article_mentions, "internal_id_x", "internal_id_article")
+    article_mentions = rename.rename_column(article_mentions, "internal_id_y", "internal_id_journal")
+    article_mentions = remove.remove_columns(article_mentions, ["title", "id","journal"])
+    print(article_mentions)
+
+    ## Get drug reference in article
+
+    drug_reference = get_drug_reference(drugs, articles)
+    print(drug_reference)
+
+    ## Finally, we can get the journal mentions of drug by merging the two dataset
+
+    journal_mentions = get_journal_mentions(drug_reference, article_mentions)
+
+    print(journal_mentions)

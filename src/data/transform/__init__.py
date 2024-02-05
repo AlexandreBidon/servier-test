@@ -8,5 +8,8 @@ __all__ = [
     "concat",
     "merge",
     "extract",
-    "unique"
+    "unique",
+    "add_type_column",
+    "rename",
+    "remove"
 ]
