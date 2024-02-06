@@ -1,3 +1,4 @@
+""" Return the mentions for each journal """
 import pandas as pd
 from data.transform import merge
 

@@ -1,3 +1,6 @@
+"""
+Removes the artefact appearing because of string conversion.
+"""
 import re
 import logging
 from typing import List

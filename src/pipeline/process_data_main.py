@@ -24,7 +24,9 @@ def process_data_main(
 
     clinical_trials = read_file.import_file(clinical_trials_path)
     clinical_trials = merge_duplicate.merge_duplicate(clinical_trials, "scientific_title")
-    clinical_trials = remove_artefact.remove_artefact(clinical_trials, ["scientific_title", "journal"])
+    clinical_trials = remove_artefact.remove_artefact(
+        clinical_trials, 
+        ["scientific_title", "journal"])
     clinical_trials = convert_date.convert_date(clinical_trials)
     clinical_trials = add_type_column.add_type_column(clinical_trials, "type", "clinical_trial")
     clinical_trials = rename.rename_column(clinical_trials, "scientific_title", "title")
@@ -49,7 +51,7 @@ def process_data_main(
 
 
     # Merge all articles (pubmed and clinical trials)
-    
+
     articles = concat.concat_data(clinical_trials, pubmed)
 
     # Extract all journal names
@@ -64,8 +66,14 @@ def process_data_main(
     ## Get article mentions of journal
 
     article_mentions = merge.merge_data(articles, all_journal, "left", "journal")
-    article_mentions = rename.rename_column(article_mentions, "internal_id_x", "internal_id_article")
-    article_mentions = rename.rename_column(article_mentions, "internal_id_y", "internal_id_journal")
+    article_mentions = rename.rename_column(
+        article_mentions,
+        "internal_id_x", 
+        "internal_id_article")
+    article_mentions = rename.rename_column(
+        article_mentions, 
+        "internal_id_y", 
+        "internal_id_journal")
     article_mentions = remove.remove_columns(article_mentions, ["title", "id","journal"])
 
     ## Get drug reference in article

@@ -1,11 +1,13 @@
+"""
+    Create the output JSON
+"""
 from datetime import datetime
 import json
-import logging
 import pandas as pd
 
 
 def create_output(
-        name: str, 
+        name: str,
         journals: pd.DataFrame,
         drugs: pd.DataFrame,
         articles: pd.DataFrame,
@@ -13,6 +15,9 @@ def create_output(
         drug_reference: pd.DataFrame,
         journal_mentions: pd.DataFrame
         ):
+    """
+    Create the output JSON
+    """
 
     journals_list = {
         row["internal_id"]:{
@@ -21,7 +26,10 @@ def create_output(
                 {
                     "id": row["internal_id_drug"],
                     "date": row["date"]
-                } for index, row in journal_mentions[journal_mentions["internal_id_journal"] == row["internal_id"]].iterrows()
+                } for index, row in 
+                journal_mentions[
+                    journal_mentions["internal_id_journal"] == row["internal_id"]
+                    ].iterrows()
             ]
         } for index, row in journals.iterrows()
     }
@@ -33,7 +41,9 @@ def create_output(
             "ref": [
                 {
                     "id": row["internal_id_article"],
-                } for index, row in drug_reference[drug_reference["internal_id_drug"] == row["internal_id"]].iterrows()
+                } for index, row in drug_reference[
+                    drug_reference["internal_id_drug"] == row["internal_id"]
+                    ].iterrows()
             ]
         } for index, row in drugs.iterrows()
     }
@@ -46,7 +56,9 @@ def create_output(
                 {
                     "id": row["internal_id_journal"],
                     "date": row["date"]
-                } for index, row in article_mentions[article_mentions["internal_id_article"] == row["internal_id"]].iterrows()
+                } for index, row in article_mentions[
+                    article_mentions["internal_id_article"] == row["internal_id"]
+                    ].iterrows()
             ]
         } for index, row in articles.iterrows()
     }

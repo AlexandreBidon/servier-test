@@ -3,7 +3,7 @@ import pandas as pd
 
 def get_drug_reference(df_drug: pd.DataFrame, df_article: pd.DataFrame, drug_column_name = "drug", article_column_name = "title"):
     """
-    
+        Return the reference for each drugs (in articles)
     """
 
     #combine words list into one string, separated by |
