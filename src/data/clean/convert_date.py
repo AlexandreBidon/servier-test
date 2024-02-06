@@ -3,7 +3,7 @@ import pandas as pd
 
 def convert_date(df: pd.DataFrame, column_name = "date"):
     """
-    
+    Convert date in dataframe
     """
     # If the date column exists
     if column_name in df.columns:

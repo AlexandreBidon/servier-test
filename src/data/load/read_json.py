@@ -14,12 +14,11 @@ def import_json_file(file_path: str):
     -------
     Dataframe
         The dataframe of the data imported
-    """ 
-    if (file_path.endswith(".json")):
+    """
+    if file_path.endswith(".json"):
         data_dict = import_json_file_to_dict(file_path)
         return pd.DataFrame(data_dict)
-    else:
-        return Exception("The file is not a JSON")
+    return Exception("The file is not a JSON")
 
 def import_json_file_to_dict(file_path: str):
     """

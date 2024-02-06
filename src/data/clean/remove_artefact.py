@@ -1,8 +1,7 @@
-import pandas as pd
-from typing import List
 import re
 import logging
-
+from typing import List
+import pandas as pd
 
 def remove_artefact(df: pd.DataFrame, column_list: List[str]):
     """
