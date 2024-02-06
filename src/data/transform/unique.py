@@ -1,5 +1,5 @@
-import pandas as pd
 from typing import List
+import pandas as pd
 
 
 def remove_duplicate(df: pd.DataFrame, column_list: List[str]):

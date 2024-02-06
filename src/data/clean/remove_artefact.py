@@ -11,9 +11,9 @@ def remove_artefact(df: pd.DataFrame, column_list: List[str]):
         # Checks if the column is in the dataframe
         if column in df.columns:
             df[column] = df[column].apply(lambda x: re.sub(r'\\x[0-9a-fA-F]+',r'', x))
-            logging.debug("Successfully removed artefact from column {}".format(column))
+            logging.debug("Successfully removed artefact from column %s", column)
         else:
             # Log to warn the user about the problem
             # Another solution would be to return an error
-            logging.warning("Could not find column {} while removing artefact.".format(column))
+            logging.warning("Could not find column %s while removing artefact.", column)
     return df
