@@ -1,5 +1,5 @@
 import pandas as pd
-from data.transform import *
+from data.transform import merge
 
 
 def get_journal_mentions(drug_reference: pd.DataFrame, article_mentions: pd.DataFrame):

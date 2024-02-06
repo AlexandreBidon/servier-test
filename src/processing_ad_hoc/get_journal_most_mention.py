@@ -1,5 +1,5 @@
-import pandas as pd
 import json
+import pandas as pd
 
 
 def get_journal_most_mentions(file_path="./data/03_result/result.json"):
@@ -27,4 +27,4 @@ def get_journal_most_mentions(file_path="./data/03_result/result.json"):
 
     result_df = pd.DataFrame.from_dict(result_dict, orient='index')
 
-    return(result_df.sort_values(by=[0], ascending=False))
+    return result_df.sort_values(by=[0], ascending=False)

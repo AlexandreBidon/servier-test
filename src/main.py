@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from processing_ad_hoc import *
+from processing_ad_hoc import get_journal_most_mention
 from pipeline.process_data_main import process_data_main
 
 
