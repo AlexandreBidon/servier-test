@@ -1,5 +1,7 @@
 # Traitement ad-hoc (bonus)
 
+[Retour au menu](./00_menu.md)
+
 ## Extraire le nom du journal qui mentionne le plus de médicaments différents
 
 Pour répondre à cette question, j'ai réalisé un traitement présent dans `src/processing_ad_hoc/get_journal_most_mention.py`. Ce traitement parcours le JSON et cherche le journal avec le plus de `ref` différentes.
